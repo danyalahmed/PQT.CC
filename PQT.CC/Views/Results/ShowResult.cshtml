@@ -1,0 +1,30 @@
+﻿@model ResultViewModel
+
+@{
+    ViewData["Title"] = "Applicaiton Feedback";
+    var imagePath = Model.CardsShown.Name + ".PNG";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">@ViewData["Title"]</h3>
+        <p class="card-subtitle">Here are the credit cards that you can apply for!</p>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <h3 class="card-title">@Model.CardsShown.Name</h3>
+                <img src="~/images/@imagePath"/>
+                <p class="card-text">APR: @Model.CardsShown.APR%</p>
+                <p class="card-text">Promotion From: @Model.CardsShown.Promotion.Start.ToShortDateString()
+                 to @Model.CardsShown.Promotion.End.ToShortDateString()</p>
+                <p class="card-text">@Model.CardsShown.Promotion.Message</p>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>

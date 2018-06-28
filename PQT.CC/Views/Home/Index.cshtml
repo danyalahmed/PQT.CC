@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Apply";
+}
+
+<div class="alert alert-info alert-dismissible fade show" role="alert">
+    <p><i class="fas fa-info-circle"></i>
+        This is a <i>Pre Qualification Tool</i> to check whether you are eligible to get a credit card.
+        Please fill the form below to find out if you are eligible to get one.
+    </p>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+@await Html.PartialAsync("~/Views/Applicants/Create.cshtml")
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

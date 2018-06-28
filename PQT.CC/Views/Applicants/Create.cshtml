@@ -1,0 +1,39 @@
+﻿@model Applicant
+
+<h4>Applicant's Information!</h4>
+<hr />
+<div class="card">
+    <div class="card-body">
+        <form asp-action="ApplyForCreditCard" asp-controller="Applicants">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" class="form-control" data-date-format="dd/mm/yyyy" autocomplete="off" />
+                <span asp-validation-for="DOB" class="text-danger" id="DOB"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AnnualIncome" class="control-label"></label>
+                <input asp-for="AnnualIncome" class="form-control" />
+                <span asp-validation-for="AnnualIncome" class="text-danger"></span>
+            </div>
+            <div class="form-group text-right"s>
+                <input type="submit" value="Apply" class="btn btn-success" />
+                <input type="reset" value="Reset" class="btn btn-warning" />                
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

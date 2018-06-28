@@ -1,0 +1,57 @@
+﻿@model ErrorViewModel
+
+@{
+    ViewData["Title"] = "Error";
+
+    var statusCode = Model.ErrorCode;
+    var statusmessage = "";
+    switch (statusCode)
+    {
+        case 400:
+            statusmessage = "Bad request: The request cannot be fulfilled!";
+            break;
+        case 403:
+            statusmessage = "Forbidden: you do not have access to this resource!";
+            break;
+        case 404:
+            statusmessage = "Page not found!";
+            break;
+        case 408:
+            statusmessage = "The server timed out waiting for the request!";
+            break;
+        case 500:
+            statusmessage = "Internal Server Error - server was unable to finish processing the request!";
+            break;
+        default:
+            statusmessage = "That’s odd... Something we didn't expect happened!";
+            break;
+    }
+}
+
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">Status Code: @Model.ErrorCode</h1>
+        <div class="card-text">
+            <h2 class="text-danger">@statusmessage</h2>
+            @if (Model.ShowRequestId)
+            {
+                <p><strong>Request ID:</strong> <code>@Model.RequestId</code></p>
+            }
+            <hr />
+            <a href="javascript:void(0)" onClick="backAway()" role="button" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+</div>
+@section scripts
+    {
+    <script>
+
+        function backAway() {
+            if (history.length === 1) {
+                window.location = "/"
+            } else {
+                history.back();
+            }
+        }
+    </script>
+}

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Results>
+
+@{
+    ViewData["Title"] = "ListResults";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">ListResults</h2>
+
+        <p class="alert alert-info alert-dismissible">
+            <i class="fas fa-info-circle"></i> "Failled" means that no card was shown! (some requirements were not met).
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </p>
+        <table class="table">
+            <thead class="bg-dark text-white">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>Applicant</th>
+                    <th>Card Shown</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Date.ToShortDateString()
+                        </td>
+                        <td>@item.Applicant.FirstName  @item.Applicant.LastName</td>
+                        @if (item.IsFailled)
+                        {
+                            <td>Failled</td>
+                        }
+                        else
+                        {
+                            <td>@item.Card.Name</td>
+                        }
+
+                        <td class="text-center">
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
